@@ -11,7 +11,7 @@ public class StringService {
     /**
      * Nimmt String entgegen und gibt ihn in UPPERCASE Form, also GROẞGESCHRIEBEN zurück
      * todo großes scharfes S (=ẞ) implementieren
-     * https://de.wikipedia.org/wiki/Gro%C3%9Fes_%C3%9F
+     * <a href="https://de.wikipedia.org/wiki/Gro%C3%9Fes_%C3%9F">...</a>
      * @param string
      * @return
      */
