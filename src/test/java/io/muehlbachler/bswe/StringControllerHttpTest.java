@@ -38,6 +38,7 @@ public class StringControllerHttpTest {
                 .andExpect(MockMvcResultMatchers.content().string(Matchers.equalTo("44")));
 
     }
+    // see https://de.wikipedia.org/wiki/Gro%C3%9Fes_%C3%9F
     @Test
     public void testEszett() throws Exception {
         mvc.perform(MockMvcRequestBuilders.get("/upper?string=ß"))
@@ -46,5 +47,11 @@ public class StringControllerHttpTest {
 
     }
 
-    // FIXME: implement more tests
+    @Test
+    public void testUESign() throws Exception {
+        mvc.perform(MockMvcRequestBuilders.get("/upper?string=ü"))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.content().string(Matchers.equalTo("Ü")));
+
+    }
 }
