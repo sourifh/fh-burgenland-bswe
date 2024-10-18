@@ -18,8 +18,32 @@ public class StringControllerHttpTest {
 
     @Test
     public void testToUpperCase() throws Exception {
-        mvc.perform(MockMvcRequestBuilders.get("/upper?string=abc")).andExpect(MockMvcResultMatchers.status().isOk())
+        mvc.perform(MockMvcRequestBuilders.get("/upper?string=abc"))
+                .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().string(Matchers.equalTo("ABC")));
+
+    }
+
+    @Test
+    public void testEmptyString() throws Exception {
+        mvc.perform(MockMvcRequestBuilders.get("/upper?string="))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.content().string(Matchers.equalTo("")));
+
+    }
+    @Test
+    public void testNumber() throws Exception {
+        mvc.perform(MockMvcRequestBuilders.get("/upper?string=44"))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.content().string(Matchers.equalTo("44")));
+
+    }
+    @Test
+    public void testEszett() throws Exception {
+        mvc.perform(MockMvcRequestBuilders.get("/upper?string=ß"))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.content().string(Matchers.equalTo("ẞ")));
+
     }
 
     // FIXME: implement more tests
